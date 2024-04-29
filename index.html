@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+*{
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('./bife-de-porco-assado-na-superficie-de-madeira-escura.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.container{
+    height: 300px;
+    width: 400px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 20px;
+   
+}
+.container-win{
+    height: 300px;
+    width: 400px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 20px;
+    background-image: url('./gifs-animados-de-fogos-de-artificio-4.gif');
+    background-position: center;
+    background-size: contain;
+
+}
+.botao{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.comic-button,.comic-button-yes {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff5252;
+  border: 2px solid #000;
+  border-radius: 10px;
+  box-shadow: 5px 5px 0px #000;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.comic-button-yes{
+    background-color: #02861a;
+}
+
+.comic-button-yes:hover {
+  background-color: #fff;
+  color: #02861a;
+  border: 2px solid #02861a;
+  box-shadow: 5px 5px 0px #02861a;
+}
+
+ .comic-button-yes:active {
+  background-color: #fcf414;
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+.saudacao{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.convite{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+.convite-aceito{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    display: none;
+    background-color: rgba(0, 0, 255, 0.656);
+}
+
+
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <p class="saudacao">Hello Rafa</p>
+        <p class="convite">Will you have lunch with me?</p>
+        <p class="convite-aceito">Aeeeeee!!!!, fico muito feliz em "saber" que aceitou, porém, NÃO FIZ NADA PARA VALIDAR SE CLICOU NO "YES", ENTÃO NÃO VOU SABER SE É SIM OU NÃO</p>
+        <div class="botao">
+                <button class="comic-button-yes" onclick="comemor()">Yes</button>
+                <button class="comic-button">No</button>
+        </div>
+    </div>
+
+    <script>
+       let button = document.querySelector('.comic-button')
+       let buttonVitoria = document.querySelector('.comic-button-yes')
+       let conviteaceito = document.querySelector('.convite-aceito')
+       let saudacao = document.querySelector('.saudacao')
+       let convite = document.querySelector('.convite')
+       button.style.position = 'relative'
+       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+       if(isMobile){
+           button.addEventListener('touchstart', fugir)
+       }
+        else{
+            button.addEventListener('mouseenter',fugir);
+        }
+
+        function comemor () {
+            let contianer = document.querySelector('.container')
+            button.style.display = 'none'
+            buttonVitoria.style.display = 'none'
+            saudacao.style.display = 'none'
+            convite.style.display = 'none'
+            conviteaceito.style.display = 'block'
+            contianer.classList.add('container-win');
+        }
+       
+
+        function fugir () {
+        let widthTela = window.innerWidth;
+        let heightTela = window.innerHeight;
+        let posicaoAleatoria = Math.floor(Math.random() * 200) * 3;
+        if (widthTela > 600) {
+            button.style.left = posicaoAleatoria + 'px';
+        }
+        if(button.style.top < 150 ||button.style.top == '-150px' ){
+            button.style.top = '150px';
+
+        }else{
+            button.style.top = '-150px';
+        }
+
+
+}
+
+    </script>
+</body>
+</html>
